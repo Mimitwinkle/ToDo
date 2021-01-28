@@ -1,34 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>ToDo</title>
+    <style>
+        body {
+            background: #E9EFE6;
+            font-family: sans-serif;
+            color: #56445D;
+        }
+        #container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+        }
+        .item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0px 8px 0px;
+            border-bottom: 1px solid #D1CFD1;
+        }
+        #container button {
+            background: #D1CFD1;
+            border-radius: 3px;
+            border-color: transparent;
+        }
+        #container button:hover {
+
+        }
+    </style>
 </head>
 <body>
-    <h1>Things I need to do</h1>
+    <div id="container">
+        <h1>Things I need to do</h1>
         <form action="/todos" method="post">
             <input type="text" name="description">
             <button type="submit">Add</button>
         </form>
         <ul>
             {{#todos}}
-                <li>
-                    <form action="/todos/{{_id}}/completed" method="post">
-                        {{description}} - {{done}} <button type="submit">Done</button>
+                <div class="item">
+                    <form name="list" action="/todos/{{_id}}/completed" method="post">
+                        
+                            
+                            <label for="item">{{description}} </label>
+                            <button type="submit">Done!</button>
+                    
+
                     </form>
-                </li>
+                </div>
             {{/todos}}
         </ul>
 
-        <h3>Done</h3>
+        <h3>Completed Tasks</h3>
         <ul>
             {{#doneTodos}}
-                <li>
+                <div class="item">
                     <form action="/todos/{{_id}}/completed" method="post">
-                        {{description}} - {{done}} <button type="submit">Undo</button>
+                        {{description}} <button type="submit">Undo</button>
                     </form>
-                </li>
+                </div>
             {{/doneTodos}}
         </ul>
+    </container>
 </body>
 </html>
