@@ -1,2 +1,2 @@
 # ToDo
-Intuitive To Do list web app inspired by Notion
+To Do list web app made with HTML/CSS, JavaScript (Node), Express and Mongoose
